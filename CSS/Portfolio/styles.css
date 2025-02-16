@@ -1,5 +1,3 @@
-/* Global styles */
-
 * {
     margin: 0;
     padding: 0;
@@ -8,32 +6,18 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
-/* Color Theme */
-
 :root {
     --bg-color: #360f56;
-    /* Dark blue background */
     --second-bg-color: #0f3278;
-    /* Slightly lighter blue */
     --text-color: #fff;
-    /* White text */
     --header-bg: #000;
-    /* Black header */
     --main-color: #0ef;
-    /* Accent color */
 }
-
-
-/* Body styles */
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
-
-
-/* Header styles */
 
 header {
     position: fixed;
@@ -65,9 +49,6 @@ nav a:hover {
     color: var(--main-color);
 }
 
-
-/* Home Section (Hello, I am...) */
-
 .home {
     display: flex;
     align-items: center;
@@ -94,19 +75,12 @@ nav a:hover {
     margin-top: 10px;
 }
 
-
-/* Adjust Me.png size */
-
 .home img {
     width: 200px;
-    /* Balanced size */
     height: 200px;
     border-radius: 50%;
     border: 4px solid var(--main-color);
 }
-
-
-/* About Me Section */
 
 .aboutme {
     display: flex;
@@ -134,19 +108,12 @@ nav a:hover {
     margin-top: 10px;
 }
 
-
-/* Adjust Me2.png size (same as Me.png) */
-
 .aboutme img {
     width: 200px;
-    /* Balanced size */
     height: 200px;
     border-radius: 50%;
     border: 4px solid var(--main-color);
 }
-
-
-/* My Projects Section */
 
 .projects {
     text-align: center;
@@ -178,9 +145,6 @@ th {
     background: var(--header-bg);
     color: var(--main-color);
 }
-
-
-/* Contact Me Section */
 
 .contact {
     text-align: center;
@@ -223,9 +187,6 @@ button:hover {
     background: #08d;
 }
 
-
-/* Footer */
-
 footer {
     background: var(--header-bg);
     color: var(--main-color);
@@ -234,9 +195,6 @@ footer {
     margin-top: 20px;
     font-weight: bold;
 }
-
-
-/* Responsive Design */
 
 @media (max-width: 768px) {
     .home,

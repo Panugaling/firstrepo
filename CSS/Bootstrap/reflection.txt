@@ -1,0 +1,3 @@
+My challenge in this activity is the css, because its more challenging than making and php file, it took me whole day just to understand its whole functionality, i have the same trouble to the previous activity
+i thought css is more simple because the difficulty level is easy but for someone like me its really not easy, just a wrong input for padding, layout styling can either make my inteface pleasing to the eyes or giving me another headache.
+I have to research on what functionalty or practices should i use that can enhance the display. overall it was fun and stressful at the same time.

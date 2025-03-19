@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification System</title>
+    <style>
+        #notification-container {
+            width: 300px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        
+        .notification {
+            background-color: #e7f3fe;
+            border: 1px solid #b3d4fc;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            border: none;
+            color: rgb(255, 0, 0);
+            padding: 5px 6px;
+        }
+        
+        #show-notification-btn {
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="notification-container"></div>
+    <button id="show-notification-btn">Show Notification</button>
+
+    <script>
+        document.getElementById('show-notification-btn').addEventListener('click', function() {
+            // Create a new notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = 'You have a new message!';
+
+            // Create a close button inside the notification
+            const closeButton = document.createElement('button');
+            closeButton.className = 'close-btn';
+            closeButton.textContent = 'x';
+            notification.appendChild(closeButton);
+
+            // Insert the new notification at the top of the notification container
+            const container = document.getElementById('notification-container');
+            if (container.firstChild) {
+                container.insertBefore(notification, container.firstChild);
+            } else {
+                container.appendChild(notification);
+            }
+
+            // Remove the notification when the close button is clicked
+            closeButton.addEventListener('click', function() {
+                container.removeChild(notification);
+            });
+
+            // Set a timer to automatically remove the notification after 5 seconds
+            setTimeout(function() {
+                if (container.contains(notification)) {
+                    container.removeChild(notification);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+
+</html>

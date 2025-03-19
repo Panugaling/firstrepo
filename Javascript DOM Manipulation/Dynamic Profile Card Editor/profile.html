@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dynamic Profile Card Editor</title>
+    
+</head>
+
+<body>
+
+    <div class="profile-card" id="profileCard">
+        <img id="profileImage" src="https://via.placeholder.com/100" alt="Profile Picture">
+        <h2 id="profileName">Profile</h2>
+        <p id="profileBio">This is a short bio.</p>
+    </div>
+
+    <div class="controls">
+        <input type="text" id="nameInput" placeholder="Enter new name">
+        <button onclick="updateName()">Update Name</button>
+        <br><br>
+
+        <input type="text" id="bioInput" placeholder="Enter new bio">
+        <button onclick="updateBio()">Update Bio</button>
+        <br><br>
+
+        <input type="file" id="imageInput" accept="image/*">
+        <br><br>
+
+        <label for="bgColorInput">Choose background color:</label>
+        <input type="color" id="bgColorInput">
+        <br><br>
+        <button id="updateBgButton">Update Background</button>
+
+    </div>
+    <script defer src="profile.js"></script>
+</body>
+
+</html>

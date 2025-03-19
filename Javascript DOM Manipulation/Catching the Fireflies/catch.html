@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fattybat Challenge</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        .bat-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .fattybat {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Catch Fatty Bat</h1>
+    <div class="bat-container">
+
+        <div class="fattybat" id="bat-1"></div>
+        <div class="fattybat" id="bat-2"></div>
+        <div class="fattybat" id="bat-3"></div>
+        <div class="fattybat" id="bat-4"></div>
+    </div>
+
+    <script>
+        for (let i = 1; i <= 4; i++) {
+            lottie.loadAnimation({
+                container: document.getElementById('bat-' + i),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: './assets/fattybat.json'
+            });
+        }
+
+        document.querySelectorAll('.fattybat').forEach(bat => {
+            bat.addEventListener('click', function() {
+                this.style.transform = 'scale(0.5)';
+                this.style.opacity = '0';
+
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                    this.style.opacity = '1';
+                }, 1000);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

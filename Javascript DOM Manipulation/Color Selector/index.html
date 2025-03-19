@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Selector</title>
+    <style>
+        #container {
+            padding: 20px;
+            border: 1px solid #000;
+        }
+        
+        .color-box {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .blue {
+            background-color: blue;
+        }
+        
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="color-box red"></div>
+        <div class="color-box blue"></div>
+        <div class="color-box green"></div>
+    </div>
+
+    <script>
+        document.getElementById('container').addEventListener('click', function() {
+            alert('Container clicked!');
+        });
+
+        var colorBoxes = document.getElementsByClassName('color-box');
+        for (var i = 0; i < colorBoxes.length; i++) {
+            colorBoxes[i].addEventListener('click', function(event) {
+                alert('Color box clicked!');
+                event.stopPropagation();
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+<!--
+Tasks:
+
+Click a color button. What happens?
+- When you click a color button with event.stopPropagation() commented out, both the button's click event and the container's click event are triggered. This means you will see two alerts: one for the color box click and one for the container click.
+
+Uncomment event.stopPropagation(); inside the button click handler.
+Click a color button again. What changed?
+- When you click a color button with event.stopPropagation() uncommented, only the button's click event is triggered. This means you will see only one alert for the color box click, and the container's click event is not triggered.
+
+Explain in your own words why event.stopPropagation() is useful in this example.
+- event.stopPropagation() is useful in this example because it prevents the click event from bubbling up to the parent container. This allows the color box click event to be handled independently without triggering the container's click event, providing more precise control over event handling.
+
+event.stopPropagation(); // Uncomment this line to stop event propagation, line 40. -->

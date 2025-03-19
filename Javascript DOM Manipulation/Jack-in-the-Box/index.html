@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <title>Jack-in-the-Box</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #f8f8f8;
+        }
+        
+        #box-container {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.5s ease-in-out;
+        }
+        
+        #popup-image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+        
+        #button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="box-container" data-state="closed">
+        <div id="popup-image"></div>
+    </div>
+    <button id="button">Open Package</button>
+
+    <audio id="pop-sound" src="./assets/bark.mp3"></audio>
+
+    <script>
+        const boxContainer = document.getElementById('box-container');
+        const button = document.getElementById('button');
+        const popSound = document.getElementById('pop-sound');
+        const popupImage = document.getElementById('popup-image');
+
+        let boxAnimation = lottie.loadAnimation({
+            container: boxContainer,
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            path: './assets/secret.json'
+        });
+
+        function toggleBox() {
+            if (boxContainer.getAttribute('data-state') === 'closed') {
+                setTimeout(() => {
+                    popSound.play();
+                }, 1000); // Delay sound for 1 second
+
+                boxAnimation.destroy();
+                boxAnimation = lottie.loadAnimation({
+                    container: boxContainer,
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: true,
+                    path: './assets/surprise.json'
+                });
+                boxContainer.setAttribute('data-state', 'open');
+
+                // Show animation
+                let surpriseAnimation = lottie.loadAnimation({
+                    container: popupImage,
+                    renderer: 'svg',
+                    loop: false,
+                    autoplay: true,
+                    path: './assets/surprise.json'
+                });
+
+                popupImage.style.display = 'block';
+
+                surpriseAnimation.addEventListener('complete', () => {
+                    popupImage.style.display = 'none';
+                });
+
+                button.textContent = "Close the Package";
+            } else {
+                resetBox();
+            }
+        }
+
+        function resetBox() {
+            popSound.pause();
+            popSound.currentTime = 0;
+            boxAnimation.destroy();
+            boxAnimation = lottie.loadAnimation({
+                container: boxContainer,
+                renderer: 'svg',
+                loop: false,
+                autoplay: true,
+                path: './assets/secret.json'
+            });
+            boxContainer.setAttribute('data-state', 'closed');
+            button.textContent = "Open Package";
+        }
+
+        // Event Listeners for both box and button
+        boxContainer.addEventListener('click', toggleBox);
+        button.addEventListener('click', toggleBox);
+    </script>
+
+</body>
+
+</html>
